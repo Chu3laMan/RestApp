@@ -1,4 +1,4 @@
-package co.netier.RestApp.config;
+package co.netier.RestApp.controller;
 
 import java.util.List;
 
@@ -26,13 +26,13 @@ public class UserRestController {
 		userService.save(user);
 	}
 	
-	@RequestMapping(value = "/users/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/users", method = RequestMethod.GET)
 	public List<User> list() {
 		return userService.findAll();
 	}
 	
-	@RequestMapping(value = "/users/{id}", method = RequestMethod.PUT)
-	public User get(@PathVariable("id") int id) {
+	@RequestMapping(value = "/users/{id}", method = RequestMethod.GET)
+	public User get(@PathVariable("id") long id) {
 		return userService.find(id);
 	}
 	
@@ -46,5 +46,6 @@ public class UserRestController {
 		userService.delete(id);
 		return new ResponseEntity<Boolean>(Boolean.TRUE, HttpStatus.OK);
 	}
+	
 
 }

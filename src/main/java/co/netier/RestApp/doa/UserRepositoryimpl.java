@@ -14,17 +14,17 @@ import co.netier.RestApp.domain.User;
 @Repository
 public class UserRepositoryimpl implements UserRepository {
 	
-	private Map<Integer, User> users = new HashMap<Integer, User>();
+	private Map<Long, User> users = new HashMap<Long, User>();
 	
 	@PostConstruct
 	public void setup() {
-		users.put(1, new User(1, "Houssam EL Mansouri"));
-		users.put(2, new User(2, "John Doe"));
+		users.put((long) 1, new User(1, "Houssam EL Mansouri"));
+		users.put((long) 2, new User(2, "John Doe"));
 	}
 
 	@Override
 	public void save(User user) {
-		users.put((int) user.getId(), user);
+		users.put(user.getId(), user);
 		
 	}
 
@@ -34,18 +34,18 @@ public class UserRepositoryimpl implements UserRepository {
 	}
 
 	@Override
-	public User find(int id) {
+	public User find(long id) {
 		return users.get(id);
 	}
 
 	@Override
-	public void update(int id, User user) {
+	public void update(long id, User user) {
 		users.put(id, user);
 		
 	}
 
 	@Override
-	public void delete(int id) {
+	public void delete(long id) {
 		users.remove(id);
 		
 	}
